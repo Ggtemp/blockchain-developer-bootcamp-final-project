@@ -1,6 +1,7 @@
 
 import { useCallback, useEffect, useState } from "react";
 import "./App.css";
+
 import Web3 from "web3";
 import detectEthereumProvider from '@metamask/detect-provider'
 import { loadContract } from "./utils/load-contract";
@@ -86,6 +87,55 @@ function App() {
 
   return (
     <>
+  <nav className="navbar" role="navigation" aria-label="main navigation">
+  <div id="navbarBasicExample" className="navbar-menu">
+    <div class="navbar-start">
+    { web3Api.isProviderLoaded ?
+          <div className="is-flex is-align-items-center">
+            <span>
+              <strong className="mr-2" >Account: </strong>
+            </span>
+              { account ?
+                <div>{account}</div> :
+                !web3Api.provider ?
+                <>
+                  <div className="notification is-warning is-size-6 is-rounded">
+                    Wallet is not detected!{` `}
+                    <a
+                      rel="noreferrer"
+                      target="_blank"
+                      href="https://docs.metamask.io">
+                      Install Metamask
+                    </a>
+                  </div>
+                </> :
+                <button
+                  className="button is-small "
+                  onClick={() =>
+                    web3Api.provider.request({method: "eth_requestAccounts"}
+                  )}
+                >
+                  Connect Wallet
+                </button>
+              }
+          </div> :
+          <span>Looking for Web3...</span>
+        }
+    </div>
+
+  </div>
+    </nav>
+    <section className="hero is-success is-halfheight has-background ">
+          <div className="hero-body has-background">
+            <p className="title">
+              Make the world a better place. 
+            </p>
+            
+          </div>
+        
+    </section>
+
+        
       <div className="donate-wrapper">
         <div className="donate">
           { web3Api.isProviderLoaded ?
@@ -120,7 +170,7 @@ function App() {
             <span>Looking for Web3...</span>
           }
           <div className="balance-view is-size-2 my-4">
-            Donations Balance: <strong>{balance}</strong> ETH
+            Donations Balance: <strong>{balance}</strong> eth
           </div>
           { !canConnectToContract &&
             <i className="is-block">
@@ -136,9 +186,11 @@ function App() {
           <button
             disabled={!canConnectToContract}
             onClick={withdraw}
-            className="button is-primary has-background-danger">Withdraw 0.1 eth</button>
+            className="button is-primary has-background-danger">Withdraw</button>
         </div>
       </div>
+      
+      
     </>
   );
 }
@@ -146,11 +198,3 @@ function App() {
 export default App;
 
 
-// Private key 32 byte number
-// c0ab562fa567abc1597a9f9c840537342809a387f6d45f5e112d0d074c6875ce
-
-// Public key(Uncompressed) 64 byte number
-// 048bd5fbf4bc3d8421b8024229943170babd858b9338552ddccb2fa3da24f867ca071f658662bc263ef3272e15fd10a3abc9533991586f2e93136f548db9cb921f
-
-// Public key(Compressed) 33 byte number
-// 038bd5fbf4bc3d8421b8024229943170babd858b9338552ddccb2fa3da24f867ca
