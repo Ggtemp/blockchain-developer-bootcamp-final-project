@@ -127,7 +127,9 @@ function App() {
              <div class="navbar-end">
                <div class="navbar-item">
                  <div class="buttons">
-                   <a href="#"class="button is-link">Admin</a>
+                  <button
+                      className="button is-primary has-background-link">Admin
+                   </button>
                    <button
                      disabled={!canConnectToContract}
                      onClick={withdraw}
