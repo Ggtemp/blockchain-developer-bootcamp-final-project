@@ -87,52 +87,65 @@ function App() {
 
   return (
     <>
-  <nav className="navbar" role="navigation" aria-label="main navigation">
-  <div id="navbarBasicExample" className="navbar-menu">
-    <div class="navbar-start">
-    { web3Api.isProviderLoaded ?
-          <div className="is-flex is-align-items-center">
-            <span>
-              <strong className="mr-2" >Account: </strong>
-            </span>
-              { account ?
-                <div>{account}</div> :
-                !web3Api.provider ?
-                <>
-                  <div className="notification is-warning is-size-6 is-rounded">
-                    Wallet is not detected!{` `}
-                    <a
-                      rel="noreferrer"
-                      target="_blank"
-                      href="https://docs.metamask.io">
-                      Install Metamask
-                    </a>
-                  </div>
-                </> :
-                <button
-                  className="button is-small "
-                  onClick={() =>
-                    web3Api.provider.request({method: "eth_requestAccounts"}
-                  )}
-                >
-                  Connect Wallet
-                </button>
+       <nav class="navbar">
+         <div class="container">
+           <div id="navMenu" class="navbar-menu">
+             <div class="navbar-start">
+             { web3Api.isProviderLoaded ?
+                <div className="is-flex is-align-items-center">
+                  <span>
+                    <strong className="mr-2" >Account: </strong>
+                  </span>
+                    { account ?
+                      <div>{account}</div> :
+                      !web3Api.provider ?
+                      <>
+                        <div className="notification is-warning is-size-6 is-rounded">
+                          Wallet is not detected!{` `}
+                          <a
+                            rel="noreferrer"
+                            target="_blank"
+                            href="https://docs.metamask.io">
+                            Install Metamask
+                          </a>
+                        </div>
+                      </> :
+                      <button
+                        className="button is-link mr-2 has-background-info "
+                        onClick={() =>
+                          web3Api.provider.request({method: "eth_requestAccounts"}
+                        )}
+                      >
+                        Connect Wallet
+                      </button>
+                    }
+                </div> :
+                <span>Looking for Web3...</span>
               }
-          </div> :
-          <span>Looking for Web3...</span>
-        }
-    </div>
+             </div>
+       
+             <div class="navbar-end">
+               <div class="navbar-item">
+                 <div class="buttons">
+                   <a href="#"class="button is-link">Admin</a>
+                   <button
+                     disabled={!canConnectToContract}
+                     onClick={withdraw}
+                     className="button is-primary has-background-danger">Withdraw
+                   </button>
+                 </div>
+               </div>
+             </div>
+           </div>
+         </div>
+       </nav>
 
-  </div>
-    </nav>
-    <section className="hero is-success is-halfheight has-background ">
-          <div className="hero-body has-background">
-            <p className="title">
-              Make the world a better place. 
-            </p>
-            
-          </div>
-        
+    <section className="hero is-halfheight is-bold">
+          <div className="hero-head">
+                 
+          </div> 
+
+          <div className="hero-body"></div>      
     </section>
 
         
@@ -158,7 +171,7 @@ function App() {
                     </div>
                   </> :
                   <button
-                    className="button is-small "
+                    className="button is-link mr-2 has-background-info"
                     onClick={() =>
                       web3Api.provider.request({method: "eth_requestAccounts"}
                     )}
@@ -169,7 +182,7 @@ function App() {
             </div> :
             <span>Looking for Web3...</span>
           }
-          <div className="balance-view is-size-2 my-4">
+          <div className="balance-view is-size-2 my-4 is-flex is-align-items-center">
             Donations Balance: <strong>{balance}</strong> eth
           </div>
           { !canConnectToContract &&
@@ -183,10 +196,6 @@ function App() {
             className="button is-link mr-2 has-background-primary">
               Donate 1 eth
             </button>
-          <button
-            disabled={!canConnectToContract}
-            onClick={withdraw}
-            className="button is-primary has-background-danger">Withdraw</button>
         </div>
       </div>
       
