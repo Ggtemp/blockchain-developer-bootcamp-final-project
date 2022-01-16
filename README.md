@@ -4,6 +4,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Available Scripts
 
+HOSTED ON vercel: https://blockchain-developer-bootcamp-final-project-zeta-ebon.vercel.app/
+
 In the project directory, you can run:
 
 ### `yarn start`
