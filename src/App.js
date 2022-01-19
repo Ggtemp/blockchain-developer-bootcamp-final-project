@@ -87,121 +87,127 @@ function App() {
 
   return (
     <>
-       <nav class="navbar">
-         <div class="container">
-           <div id="navMenu" class="navbar-menu">
-             <div class="navbar-start">
-             { web3Api.isProviderLoaded ?
-                <div className="is-flex is-align-items-center">
-                  <span>
-                    <strong className="mr-2" >Account: </strong>
-                  </span>
-                    { account ?
-                      <div>{account}</div> :
-                      !web3Api.provider ?
-                      <>
-                        <div className="notification is-warning is-size-6 is-rounded">
-                          Wallet is not detected!{` `}
-                          <a
-                            rel="noreferrer"
-                            target="_blank"
-                            href="https://docs.metamask.io">
-                            Install Metamask
-                          </a>
-                        </div>
-                      </> :
-                      <button
-                        className="button is-link mr-2 has-background-info "
-                        onClick={() =>
-                          web3Api.provider.request({method: "eth_requestAccounts"}
-                        )}
-                      >
-                        Connect Wallet
-                      </button>
-                    }
-                </div> :
-                <span>Looking for Web3...</span>
-              }
-             </div>
-       
-             <div class="navbar-end">
-               <div class="navbar-item">
-                 <div class="buttons">
-                  <button
-                      className="button is-primary has-background-link">Admin
-                   </button>
-                   <button
-                     disabled={!canConnectToContract}
-                     onClick={withdraw}
-                     className="button is-primary has-background-danger">Withdraw
-                   </button>
+       <section className="hero is-halfheight is-bold">
+           <div className="hero-head">
+             <header className="navbar ">
+               <div className="container">
+                 <div className="navbar-brand">
+                 { web3Api.isProviderLoaded ?
+                    <div className="is-flex is-align-items-center">
+                      <span>
+                        <strong className="mr-2 has-text-white" >Account: </strong>
+                      </span>
+                        { account ?
+                          <div className ="has-background-danger-light has-text-danger-dark p-3 is-size-5 is-rounded">{account}</div> :
+                          !web3Api.provider ?
+                          <>
+                            <div className="notification is-warning is-size-6 is-rounded">
+                              Wallet is not detected!{` `}
+                              <a
+                                rel="noreferrer"
+                                target="_blank"
+                                href="https://metamask.io/download/">
+                                Install Metamask
+                              </a>
+                            </div>
+                          </> :
+                          <button
+                            className="button mr-2 has-background-danger has-text-white is-link "
+                            onClick={() =>
+                              web3Api.provider.request({method: "eth_requestAccounts"}
+                            )}
+                          >
+                            Connect Wallet
+                          </button>
+                        }
+                    </div> :
+                    
+                    <span className="has-text-white  ">Looking for Web3...</span>
+                  }
+                   <span className="navbar-burger" data-target="navbarMenuHeroC">
+                   <span></span>
+                   <span></span>
+                   <span></span>
+                   </span>
+                 </div>
+                 <div id="navbarMenuHeroC" className="navbar-menu">
+                   <div className="navbar-end">
+                   <div className="buttons">
+                           <button
+                               className="button is-primary has-background-link">Admin
+                            </button>
+                            <button
+                              disabled={!canConnectToContract}
+                              onClick={withdraw}
+                              className="button is-danger is-light">Withdraw
+                            </button>
+                          </div>
+                   </div>
                  </div>
                </div>
-             </div>
+             </header>
            </div>
-         </div>
-       </nav>
-
-    <section className="hero is-halfheight is-bold">
-          <div className="hero-head">
-                 
-          </div> 
-
-          <div className="hero-body"></div>      
-    </section>
-
-        
-      <div className="donate-wrapper">
-        <div className="donate">
-          { web3Api.isProviderLoaded ?
-            <div className="is-flex is-align-items-center">
-              <span>
-                <strong className="mr-2" >Account: </strong>
-              </span>
-                { account ?
-                  <div>{account}</div> :
-                  !web3Api.provider ?
-                  <>
-                    <div className="notification is-warning is-size-6 is-rounded">
-                      Wallet is not detected!{` `}
-                      <a
-                        rel="noreferrer"
-                        target="_blank"
-                        href="https://docs.metamask.io">
-                        Install Metamask
-                      </a>
-                    </div>
-                  </> :
-                  <button
-                    className="button is-link mr-2 has-background-info"
-                    onClick={() =>
-                      web3Api.provider.request({method: "eth_requestAccounts"}
-                    )}
-                  >
-                    Connect Wallet
-                  </button>
-                }
-            </div> :
-            <span>Looking for Web3...</span>
-          }
-          <div className="balance-view is-size-2 my-4 is-flex is-align-items-center">
-            Donations Balance: <strong>{balance}</strong> eth
-          </div>
-          { !canConnectToContract &&
-            <i className="is-block">
-              Connect to ropsten
-            </i>
-          }
-          <button
-            disabled={!canConnectToContract}
-            onClick={addFunds}
-            className="button is-link mr-2 has-background-primary">
-              Donate 1 eth
-            </button>
-        </div>
-      </div>
-      
-      
+          
+         
+          <div className="hero-body"></div>   
+            
+        </section>   
+        <div className="donate-wrapper">  
+            
+             <div className="donate">
+               { web3Api.isProviderLoaded ?
+                 <div className="is-flex is-align-items-center">
+                   <span>
+                     <strong className="mr-2 has-text-white" >Account: </strong>
+                   </span>
+                     { account ?
+                       <div className="has-background-danger-light has-text-danger-dark p-4 is-size-5">{account}</div> :
+                       !web3Api.provider ?
+                       <>
+                         <div className="notification is-warning is-size-6 is-rounded">
+                           Wallet is not detected!{` `}
+                           <a
+                             rel="noreferrer"
+                             target="_blank"
+                             href="https://metamask.io/download/">
+                             Install Metamask
+                           </a>
+                         </div>
+                       </> :
+                       <button
+                         className="button mr-2 has-background-danger has-text-white is-link"
+                         onClick={() =>
+                           web3Api.provider.request({method: "eth_requestAccounts"}
+                         )}
+                       >
+                         Connect Wallet
+                       </button>
+                     }
+                 </div> :
+                 <span>Looking for Web3...</span>
+               }
+                
+               { !canConnectToContract &&
+                 <span className="is-block has-text-white">
+                   Connect to ropsten
+                 </span>
+               }
+              
+               <button
+                 disabled={!canConnectToContract}
+                 onClick={addFunds}
+                 className="button is-link mt-6 has-background-danger is-large is-fullwidth">
+                   Donate 1 eth
+                 </button>
+                 <div className="balance-view is-size-2 my-4 is-flex is-align-items-center has-text-white">
+                  Donations : &nbsp; <strong className="has-text-white">{balance}</strong>&nbsp;eth
+                </div>
+              
+               
+             </div>
+ 
+             
+           </div>
     </>
   );
 }
