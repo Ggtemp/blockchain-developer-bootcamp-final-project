@@ -147,10 +147,7 @@ function App() {
                </div>
              </header>
            </div>
-          
-         
-          <div className="hero-body">
-            
+          <div className="hero-body"> 
             <div className="tile is-parent is-vertical is-5">
               <article className="tile is-child notification is-light is-small" >
                 <p className="title is-1">Fundraising for the people and causes you care.</p>
