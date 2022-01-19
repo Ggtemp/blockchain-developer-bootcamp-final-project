@@ -12,6 +12,9 @@ The user can donate 1eth at time.
 User must log in to Metamask and connect with Ropsten Test Network.
 Only contract’s owner can withdraw.
 
+Screencast:
+https://youtu.be/yaZamj4liJo
+
 Simple workflow
 1.	https://blockchain-developer-bootcamp-final-project-zeta-ebon.vercel.app/
 2.	Connect  with Metamask (Ropsten testnet)
