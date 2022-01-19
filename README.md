@@ -6,6 +6,18 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 HOSTED ON vercel: https://blockchain-developer-bootcamp-final-project-zeta-ebon.vercel.app/
 
+Project description
+Donate is Dapp for collecting donations and charity to help each other around the world.
+The user can donate 1eth at time.
+User must log in to Metamask and connect with Ropsten Test Network.
+Only contract’s owner can withdraw.
+
+Simple workflow
+1.	https://blockchain-developer-bootcamp-final-project-zeta-ebon.vercel.app/
+2.	Connect  with Metamask (Ropsten testnet)
+3.	Donate 1 eth
+
+
 In the project directory, you can run:
 
 ### `yarn start`

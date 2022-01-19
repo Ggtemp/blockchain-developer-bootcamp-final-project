@@ -87,7 +87,7 @@ function App() {
 
   return (
     <>
-       <section className="hero is-halfheight is-bold">
+       <section className="hero is-fullheight is-bold">
            <div className="hero-head">
              <header className="navbar ">
                <div className="container">
@@ -134,7 +134,7 @@ function App() {
                    <div className="navbar-end">
                    <div className="buttons">
                            <button
-                               className="button is-primary has-background-link">Admin
+                               className="button is-text has-text-grey">Admin
                             </button>
                             <button
                               disabled={!canConnectToContract}
@@ -149,65 +149,67 @@ function App() {
            </div>
           
          
-          <div className="hero-body"></div>   
+          <div className="hero-body">
             
-        </section>   
-        <div className="donate-wrapper">  
-            
-             <div className="donate">
-               { web3Api.isProviderLoaded ?
-                 <div className="is-flex is-align-items-center">
-                   <span>
-                     <strong className="mr-2 has-text-white" >Account: </strong>
-                   </span>
-                     { account ?
-                       <div className="has-background-danger-light has-text-danger-dark p-4 is-size-5">{account}</div> :
-                       !web3Api.provider ?
-                       <>
-                         <div className="notification is-warning is-size-6 is-rounded">
-                           Wallet is not detected!{` `}
-                           <a
-                             rel="noreferrer"
-                             target="_blank"
-                             href="https://metamask.io/download/">
-                             Install Metamask
-                           </a>
-                         </div>
-                       </> :
-                       <button
-                         className="button mr-2 has-background-danger has-text-white is-link"
-                         onClick={() =>
-                           web3Api.provider.request({method: "eth_requestAccounts"}
-                         )}
-                       >
-                         Connect Wallet
-                       </button>
-                     }
-                 </div> :
-                 <span>Looking for Web3...</span>
-               }
-                
-               { !canConnectToContract &&
-                 <span className="is-block has-text-white">
-                   Connect to ropsten
-                 </span>
-               }
-              
-               <button
-                 disabled={!canConnectToContract}
-                 onClick={addFunds}
-                 className="button is-link mt-6 has-background-danger is-large is-fullwidth">
-                   Donate 1 eth
-                 </button>
-                 <div className="balance-view is-size-2 my-4 is-flex is-align-items-center has-text-white">
-                  Donations : &nbsp; <strong className="has-text-white">{balance}</strong>&nbsp;eth
+            <div className="tile is-parent is-vertical is-5">
+              <article className="tile is-child notification is-light is-small" >
+                <p className="title is-1">Fundraising for the people and causes you care.</p>
+                <p className="subtitle has-text-danger is-4">Together we can change the world.</p>
+                <div className="donate ">
+                   { web3Api.isProviderLoaded ?
+                     <div className=" is-align-items-center is-flex">
+                      <span>
+                        <strong className="mr-2 has-text-dark" >Account: </strong>
+                      </span>
+                       
+                         { account ?
+                           <div className ="has-background-danger-light has-text-danger-dark p-1 is-rounded">{account}</div> :
+                           !web3Api.provider ?
+                           <>
+                             <div className="notification is-warning is-size-6 is-rounded">
+                               Wallet is not detected!{` `}
+                               <a
+                                 rel="noreferrer"
+                                 target="_blank"
+                                 href="https://metamask.io/download/">
+                                 Install Metamask
+                               </a>
+                             </div>
+                           </> :
+                           <button
+                             className="button mr-2 has-background-danger has-text-white is-link"
+                             onClick={() =>
+                               web3Api.provider.request({method: "eth_requestAccounts"}
+                             )}
+                           >
+                             Connect Wallet
+                           </button>
+                         }
+                     </div> :
+                     <span className="has-text-dark">Looking for Web3...</span>
+                   }
+                    
+                   { !canConnectToContract &&
+                     <span className="is-block has-text-dark">
+                       Connect to ropsten
+                     </span>
+                   }
+                  
+                   <button
+                     disabled={!canConnectToContract}
+                     onClick={addFunds}
+                     className="button is-link mt-6 has-background-danger is-large is-halfwidth">
+                       Donate 1 eth
+                     </button>
+                     <div className="balance-view is-size-2 my-4 is-flex is-align-items-center has-text-dark">
+                      Donations : &nbsp; <strong className="has-text-dark">{balance}</strong>&nbsp;eth
+                  </div>
+                  </div>
+                </article>
                 </div>
-              
-               
-             </div>
- 
-             
-           </div>
+              </div>       
+        </section>   
+       
     </>
   );
 }
